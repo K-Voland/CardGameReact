@@ -1,5 +1,7 @@
 import { createStoreon, StoreonModule } from 'storeon'
 
+import { idText } from 'typescript';
+
 interface Player {
   id: number;
   position: {x:number, y:number},
@@ -17,12 +19,13 @@ export interface PlayerState {
 export interface PlayerEvents {
   "player/hod": { playerId: number, x:number, y: number},
   "player/currentPlayerHod": number
+  "player/Board": {id: number; health:number, armor:number,}
   // "player/hod": { playerId: number, x:number, y: number}
 }
 
-const playerModule: StoreonModule<PlayerState, PlayerEvents> = store => {
+export const playerModule: StoreonModule<PlayerState, PlayerEvents> = store => {
     store.on('@init', () => ({ currentPlayerHod:1, players: [{id: 1, position: {x: 0, y: 0}, image: "LSoldar.png", health: 100, armor:100},
-    {id:2, position: {x: 8, y: 5}, image: "RSlodarChib.png", health: 100, armor:100}
+                            {id:2, position: {x: 8, y: 5}, image: "RSlodarChib.png", health: 100, armor:100}
   ] }))
 
     store.on('player/hod', (state, {playerId, x, y}) => {
@@ -38,13 +41,16 @@ const playerModule: StoreonModule<PlayerState, PlayerEvents> = store => {
     });
 
     store.on('player/currentPlayerHod', (state, playerId) => {
- 
-
-      return {
+       return {
         currentPlayerHod: playerId
       }
     });
    
+    // store.on('player/Board', (players.id,players.health,players.armor) => {
+    //   return {
+        
+    //   }
+    // });
   }
 
   type State = PlayerState
@@ -53,3 +59,4 @@ const playerModule: StoreonModule<PlayerState, PlayerEvents> = store => {
   const store = createStoreon<State, Events>([playerModule])
 
   export default store;
+

@@ -8,6 +8,7 @@ import { ICard } from '../Kartochka/KardTS';
 import { Console } from 'console';
 import { useStoreon } from 'storeon/react';
 import { PlayerState, PlayerEvents } from '../store';
+import bun from '../../assets/bunker.png';
 
 
 //генерация поля, наполнения массива клетками//
@@ -20,8 +21,6 @@ const generateField = (rows: number, columns: number) => {
             array[i].push(new CKletka(i, j, null));
         }
     }
-
-
     return array;
 }
 
@@ -92,15 +91,21 @@ const Cards : ICard[] =  [
             field[player.position.y][player.position.x] = new CKletka(player.position.y, player.position.x, player.id , player.image)
         }
         const items = field.map((row: CKletka[]) => {
-
             //тут размер расположение//
-            return (
+            return ( 
                 <Grid container item xs={12} spacing={0}  justify="center"> 
                     {drawRow(row, clickHandler)}
+                    {/* {CKletka[3][3] = () => {return <img src={bun} />} }  */}
                 </Grid>
 
             );
         });
+
+        const Buncer = (State) => {
+            return(
+                CKletka[3][3] &&  <img src={bun} />
+            );
+        };
 
         return (
             <>
