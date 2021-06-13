@@ -38,7 +38,7 @@ const drawRow = (row: CKletka[], clickHandler: any) => {
 
 const Cards : ICard[] =  [
     {name:"Аптечка",
-    img:"heal",
+    img:"heal.jpg",
     opisanie:"Востанавливает 50хп"    
     },
     {name:"Спринт",
@@ -46,11 +46,11 @@ const Cards : ICard[] =  [
     opisanie:"Персонаж перемещается на 3 клетки"    
     },
     {name:"Броня",
-    img:"Bronya",
+    img:"Bronya.jpg",
     opisanie:"Дает 50 брони"    
     },
     {name:"Дробовик",
-    img:"",
+    img:"Дробовик.jpg",
     opisanie:"Наносит 80 урона на расстоянии 3-х клеток"    
     },
     {name:"Автомат",
@@ -112,7 +112,8 @@ const Cards : ICard[] =  [
             <Grid container spacing={0} style={{margin:"20px"}}>
                 {items}
             </Grid>
-            <Grid container spacing={2} style={{margin:"200px"}}>
+            
+            <Grid container spacing={2} justify="center" style={{margin:"20px"}}>
                 {Cards.map((item,i) => {
                     return <Kartochka kartochka={item} key={i}/>;
                 })

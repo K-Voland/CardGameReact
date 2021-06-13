@@ -13,21 +13,17 @@ import Grid from '@material-ui/core/Grid';
 function App() {
   return (
     <StoreContext.Provider value={store}>
-      <Grid container spacing={3}>
-        <Grid item xs={1}>
-          <Panel />
+      <Grid container spacing={1}>
+        <Grid item xs={2}>
+          <Panel name={"Player1"} heal={95} />
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={8}>
           <Pole />
         </Grid>
-        <Grid item xs={1}>
-          <Panel />
+        <Grid item xs={2}>
+          <Panel name={"Player1"} heal={50}/>
         </Grid>
       </Grid>
-
-
-
-
     </StoreContext.Provider>
   );
 }
